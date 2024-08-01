@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+</head>
+
+<style>
+    .block{
+        margin: 20px;
+        padding: 5px;
+        border: 5px ,solid, rgb(0,0,0);
+        overflow-x:auto;
+    }
+    .rating_ele{
+        margin-right:20px;    
+    }
+    .pre{
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+</style>
+
+<body>
+
+    <div class="block">
+        <a href="{%url 'home'%}">HOME</a>
+        <p>
+            <h3>Title: </h3><h4>{{recipe.title}}</h4>
+            </br></br></br>
+            <img style="height:300px;width:300px;"src="{{recipe.recp_img.url}}" alt="{{recipe.title}}">
+            </br></br></br>
+            <h3>By: </h3><h4>{{recipe.author}}</h4>
+            </br></br></br>
+            <h3>Difficulty: </h3><h4>{{recipe.difficulty}}/5</h4>
+            </br></br></br>
+            <h3>Category: </h3><h4>{{recipe.category}}</h4>
+            </br></br></br>
+            <h3>Rating: </h3><h4>{{avg}}/5 (total {{count}} reviews)</h4>
+            </br></br></br>
+            <h3>Description: </h3>
+            </br>
+            <pre class="pre">
+{{recipe.description}}
+            </pre>
+            
+            </br></br></br>
+            <h3>Ingredients: </h3>
+            <pre>
+{{recipe.ingredients}}
+            </pre>
+            
+            </br></br></br>
+            <h3>Procedure: </h3>
+            <pre>
+{{recipe.procedure}}
+            </pre>
+            
+            </br></br></br>
+        </p>
+
+        {% if recipe.author != request.user%}
+        <form action="" method='POST'>
+
+            <div style="display:flex;">
+                {% csrf_token %}
+                
+                <div class="rating_ele">
+                    <label for="rating">Rate the post:</label><br>
+                </div>
+                
+               
+                
+                <div class="rating_ele">
+                    <select id="rating" name="rating">
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                </select>
+                </div>
+                
+                
+                <div class="rating-ele"><input type="submit" value="enter"></div>
+            </div>
+            
+                
+        </form>
+        {%endif%}
+    </div>
+    
+</body>
+</html>

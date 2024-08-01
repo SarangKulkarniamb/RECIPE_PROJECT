@@ -1,0 +1,42 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="stylesheet" href="/static/homepage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div id="nav">
+
+        <img src="/static/logo.png" alt="">
+        <a href="" class="navtext" id="navhome">HOME</a>
+        <a href="" class="navtext" id="navabout">ABOUT</a>
+        <a href="" class="navtext" id="navtrend" >CONTACT US</a>
+        <a href="{% url 'all_recps' %}" class="navtext" id="navrecp">RECIPES</a>
+        {% if user.is_authenticated %}
+        <h5>HELLO {{request.user}} </h5>
+        <a href="logout/" class="navtext" id="navlogout">LOGOUT</a>
+        <a href="{% url 'dashboard_join' %}" class="navtext" id="navdashboard">DASHBOARD</a>
+        {% else %}
+        <a href="login/" class="navtext" id="navlogin">LOGIN</a>
+        {% endif %}
+
+    </div>
+    <img id="bgimg" src="https://wallpaperaccess.com/full/9028357.jpg" alt="">
+        
+    <div id="main">
+        <div id="page1">
+            <h1>WELCOME  TO  FLAVOR  FIESTA</h1> 
+            <h4>Connecting The World Through Taste...</h4>
+        </div>
+
+    </div>
+    
+</body>
+</html>

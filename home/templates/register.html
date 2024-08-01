@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        font-family:"Montserrat", sans-serif;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+    
+
+    input, textarea {
+        padding: 5px;
+        font-size: 16px;
+        width: 400px
+    }
+    #bgimg{
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        
+    }
+    #main{
+        height: 100vh;
+        width: 100vw;
+        position: relative;
+        display:flex;
+        align-items: center;
+        justify-content: center; 
+        background-color: rgba(0, 0, 0, 0.36)
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; 
+        border-radius: 15px;
+        height: 750px;
+        width: 800px;
+        text-align:center
+        background-color: #130f40;
+        background-image: linear-gradient(315deg, #130f40 0%, #000000 74%);
+    }
+    .container h4{
+        margin-bottom: 50px;
+        font-size: 40px;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+        display:flex;
+
+    }
+    .container .field{
+        display: flex;
+        margin-bottom: 30px;
+        padding: 5px;
+        justify-content: space-between;
+    }
+    .field h5 {
+        font-size: 15px;
+        margin-left: 10px;
+        margin-right: 10px;
+        color: rgb(255,255,255);
+    }
+    button {
+        color: black;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 20px;
+        margin-left:245px;
+        height: 40px;
+        width: 100px;
+    }
+    #msg{
+        margin-top:30px;
+    }
+    .container img{
+        margin-left: 3px;
+        height: 100px;
+        width: 100px;
+    }
+    #error_message{
+        font-size: 15px;
+        color: rgb(255,255,255);
+        
+        margin-top:30px;
+        
+    }
+    .errorfield{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+</style>
+<body>
+
+    <img id="bgimg" src="https://wallpaperaccess.com/full/9028357.jpg" alt="">
+        
+    <div id="main">
+        <div class="container">
+            <img src="/static/logo.png" alt="">
+            <h4>REGISTER</h4>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="field">
+                    <h5>USERNAME : </h5>
+                    {{form.username}}
+                </div>
+
+                <div class="field">
+                    <h5>EMAIL : </h5>
+                    {{form.email}}
+                </div>
+                <div class="field">
+                    <h5>PASSWORD : </h5>
+                    {{form.password1}}
+                </div>
+                <div class="field">
+                    <h5>CONFIRM PASSWORD : </h5>
+                    {{form.password2}}
+                </div>
+
+                {% if form.errors %}
+                    <div class="errorfield">
+                        <ul>
+                            {% for field, errors in form.errors.items %}
+                                {% for error in errors %}
+                                    <li>
+                                        <h5 id="error_message">{{ error }}</h5>
+                                    </li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                <button type="submit" class:"b">Register</button>
+                
+                
+            </form>
+            <div class="field" id="msg">
+                <h5 class="text">Already have an account? </h5>
+                <a href="{% url 'login'%}">Login</a>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

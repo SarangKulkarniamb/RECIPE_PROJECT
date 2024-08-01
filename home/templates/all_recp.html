@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECIPES</title>
+    <link rel="stylesheet" href="/static/all_recps.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+</head>
+
+<body>
+    {{ redirect_to_login_immediately }}
+    <img id="bgimg" src="https://wallpaperaccess.com/full/9028357.jpg" alt="">
+    <div id="main"> </div>
+
+    <div class="container">
+
+        <div class="logo">
+            <img src="/static/logo.png" alt="">
+        </div>
+        
+        <div class="links">
+            <a href="{% url 'home' %}" class="navtext" id="navhome">HOME</a>
+            <a href="{% url 'dashboard_join' %}" class="navtext" id="navdashboard">DASHBOARD</a>
+        </div>
+
+        
+
+        <div class="formblock">
+            
+            <form action="" method="GET">
+                
+                <div class="field">
+                    <input type="text" id="title" class="inp" value="{{request.GET.title}}" name="title" placeholder="    Search Bar">
+                </div>
+            
+                
+        
+                <div class="field">
+                    <input type="submit" id="sub" value="Search">
+                </div>
+        
+                
+            </form>
+        </div>
+        
+
+    </div>
+
+    <div id="data">
+        {% if recp %}
+        {% for i in recp %}
+    
+        <div class="card">
+
+            <div id="c1" class="c">
+                <div class="imag"><img src="{{i.recp_img.url}}" alt=""></div>
+                <h4>Rating : {{i.avg}}/5</h4>
+                <h4>Difficulty : {{i.difficulty}}/5 </h4>
+                <h4>Category : {{i.category}}</h4>
+            </div>
+            <div id="c2" class="c">
+                <h1>{{i.title}}</h1>
+                <h3>-by {{i.author.username}}</h3>
+                <p>{{i.description}}</p>
+                <a href="{%url 'view_recp' i.id%}"> VIEW </a>
+            </div>
+
+
+        </div>
+    
+        {%endfor%}
+
+        <div class="pagination">
+            <span class="step-links">
+
+                {% if recp.has_previous %}
+                    <a class="page-link" href="?page=1&title={{request.GET.title}}">&laquo; first</a>
+                    <a class="page-link" href="?page={{ recp.previous_page_number }}&title={{request.GET.title}}">previous</a>
+                {% endif %}
+        
+                {% for num in recp.paginator.page_range %}
+                    {% if recp.number == num %}
+                        <span class="current">{{ num }}</span>
+                    {% else %}
+                        <a class="page-link" href="?page={{ num }}&title={{request.GET.title}}">{{ num }}</a>
+                    {% endif %}
+                {% endfor %}
+        
+                {% if recp.has_next %}
+                    <a class="page-link" href="?page={{ recp.next_page_number }}&title={{request.GET.title}}">next</a>
+                    <a class="page-link" href="?page={{ recp.paginator.num_pages }}&title={{request.GET.title}}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+        {% else %}
+
+        <h3 style="position:relative;font-size: 15px;color: rgb(255, 255, 255);text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);font-size:35px; ">NO RECIPES FOUND</h3>
+
+        {%endif%}
+
+    </div>
+    
+    
+</body>
+</html>

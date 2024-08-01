@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD</title>
+    <link rel="stylesheet" href="{% static 'dashboard.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    {{ redirect_to_login_immediately }}
+    <div id="nav">
+        <img src="{% static 'logo.png' %}" alt="">
+        <a href="{% url 'home' %}" class="navtext" id="navhome">HOME</a> 
+        <a href="{% url 'logout' %}" class="navtext" id="navlogout">LOGOUT</a>
+        <h5>HELLO {{ request.user }}</h5>
+    </div>
+    
+    <img id="bgimg" src="https://wallpaperaccess.com/full/9028357.jpg" alt="">
+        
+    <div id="main">
+        <div id="sidebar">
+            <h4>Menu of Contents</h4>
+            <ul>
+                <li>
+                    <a href="{% url 'dashboard_join' %}">-- Join Membership</a>
+                </li>
+                <li>
+                    <a href="{% url 'dashboard_view' %}">-- Your Recipes</a>
+                </li>
+                <li>
+                    <a href="{% url 'add_recipe' %}">-- Post new Recipe</a>
+                </li>
+            </ul>
+        </div>
+        <div id="content">
+            {% block content %}
+            
+            {% endblock %}
+        </div>
+    </div>
+    
+</body>
+</html>

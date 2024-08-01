@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        font-family:"Montserrat", sans-serif;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+    input, textarea {
+        padding: 5px;
+        font-size: 16px;
+        width: 400px
+    }
+    #bgimg{
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        
+    }
+    #main{
+        height: 100vh;
+        width: 100vw;
+        position: relative;
+        display:flex;
+        align-items: center;
+        justify-content: center; 
+        background-color: rgba(0, 0, 0, 0.36)
+    }
+    .container{
+        box-shadow: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; 
+        border-radius: 30px;
+        height: 600px;
+        width: 700px;
+        background-color: #130f40;
+        background-image: linear-gradient(315deg, #130f40 0%, #000000 74%);
+    }
+    .container img{
+        height: 100px;
+        width: 100px;
+    }
+    .container h4{
+        margin-bottom: 60px;
+        font-size: 40px;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9); 
+        display:flex;
+
+    }
+    .container .field{
+        display: flex;
+        margin-bottom: 30px;
+        padding: 5px;
+        justify-content: space-between;
+    }
+    .field h5{
+        font-size: 15px;
+        margin-left: 5px;
+        margin-right: 10px;
+        color: rgb(255,255,255);
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+    }
+    .field p{
+        
+        font-size: 15px;
+        margin-left: 110px;
+        color: rgb(255,255,255);
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+    }
+    button {
+        color: black;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-left:210px;
+        height: 40px;
+        width: 100px;
+    }
+    #msg{
+        margin-top:40px;
+    }
+    
+</style>
+<body>
+
+    <img id="bgimg" src="https://wallpaperaccess.com/full/9028357.jpg" alt="">
+    
+    <div id="main">
+        
+        <div class="container">
+            <img src="/static/logo.png" alt="">
+            <h4>LOGIN</h4>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="field">
+                    <h5>USERNAME : </h5>
+                    <input type="text" name="username" placeholder="Username....">
+                </div>
+
+                <div class="field">
+                    <h5>PASSWORD : </h5>
+                    <input type="password" name="password" placeholder="Password....">
+                </div>
+
+                <div class="field">
+                    {% for message in messages %}
+
+                    <p class="message">{{message}}</p>
+
+                    {% endfor %}
+                </div>
+
+                <button type="submit" class:"b">LOGIN</button>
+                
+                
+            </form>
+            <div class="field" id="msg">
+                <h5 class="text">Haven't Registerd yet? </h5>
+                <a style="font-weight:500"href="{% url 'register'%}">Sign Up</a>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,223 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family:"Montserrat", sans-serif;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+#body{
+    height: 100vh;
+    width: 100vw;
+}
+
+
+#bgimg{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    
+}
+
+#main{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.36);
+}
+.container{
+    overflow: hidden;
+    box-shadow: 8px 8px 3px rgba(0, 0, 0, 0.826);
+    margin:30px;
+    margin-left: 70px;
+    margin-bottom: 85px;
+    position: relative;
+    box-shadow: 20px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    height:65px;
+    width: 1600px;
+    border-radius: 22px;
+    background-color: #100c39;
+    background-image: linear-gradient(315deg, #140f4e 0%, #08041a 74%);
+}
+.container img{
+    height: 90px;
+    width: 90px;
+    margin-left: 35px;
+}
+
+.container .links{
+    display: flex;
+    column-gap: 40px;
+    margin-left: 60px;
+}
+.formblock{
+    margin-top: 27px;
+}
+
+.navtext{
+    width:80px;
+    font-size: 13px;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+    text-decoration: none;
+    font-weight: 600;
+}
+#navhome:hover{
+    font-size:15px;
+    transition: all 0.3s;
+}
+#navdashboard:hover{
+    font-size:15px;
+    transition: all 0.3s;
+}
+#navdashboard{
+    width: 130px;
+}
+.formblock form{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:rgb(0, 0, 0);
+    text-shadow:none;
+    
+}
+.formblock .field{
+    display: flex;
+    margin-bottom: 30px;
+    padding: 5px;
+}
+
+.field .inp{
+    border-radius: 18px;
+    width: 500px;
+    height: 45px;
+    margin-left: 500px;
+}
+
+#sub {
+    border-radius: 20px;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    height: 45px;
+    width: 90px;
+}
+
+.card{
+    overflow: hidden;
+    margin: auto;
+    margin-bottom:60px;
+    height: 400px;
+    position: relative;
+    width:800px;
+    border-radius: 50px;
+    background-color: #130f40;
+    background-image: linear-gradient(315deg, #0f0a41 0%, #090b26 74%);
+    display: flex;
+    color: rgb(255, 255, 255);
+    box-shadow: 8px 8px 3px rgba(0, 0, 0, 0.826);
+}
+#data{
+    display:flex;
+    flex-direction: column;
+    justify-content:center ;
+    align-items: center;
+}
+#c1{
+    height:100%;
+    width:38%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap:20px;
+}
+#c2{
+    height:100%;
+    width:62%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap:35px;
+}
+#c1 img{
+    border-radius: 20px;
+    width:240px;
+    height:240px;
+    transition: all 0.3s;
+}
+#c1 img:hover{
+    width:255px;
+    height:255px;
+}
+#c1 h4{
+    font-size: 13px;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.881); 
+    font-weight: 600;
+    
+}
+#c2 h1{
+
+    text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.844); 
+    font-weight: 600;
+}
+#c2 h3{
+    margin-left: 150px;
+}
+#c2 p{
+    font-size: 13.5px;
+}
+#c2 a{
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+#c2 a:hover{
+    font-size: 17px;
+    font-weight: 700;
+    
+}
+
+.pagination {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 20px ;
+
+}
+
+.pagination .step-links {
+    display: flex;
+    align-items: center;
+}
+
+.pagination .step-links a.page-link,
+.pagination .step-links span.current {
+    margin: 0 5px;
+    padding: 8px 16px;
+    
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.pagination .step-links a.page-link {
+    color: rgb(255, 255, 255);
+    
+    border-radius: 10px;
+    background-color: #130f40;
+    background-image: linear-gradient(315deg, #0f0a41 0%, #090b26 74%);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination .step-links span.current {
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    background-color: #080622;
+    background-image: linear-gradient(315deg, #0f0a41 0%, #090b26 74%);
+    
+}

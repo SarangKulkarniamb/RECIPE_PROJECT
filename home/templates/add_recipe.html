@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family:"Montserrat", sans-serif;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        input, textarea {
+            padding: 5px;
+            font-size: 16px;
+            width: 400px
+        }
+        #bgimg{
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+        }
+        #main{
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            display:flex;
+            align-items: center;
+            justify-content: center; 
+            background-color: rgba(0, 0, 0, 0.36)
+        }
+        .container{
+            margin-top:1000px;
+            margin-bottom:80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; 
+            border-radius: 30px;
+            height: 1600px;
+            width: 1000px;
+            text-align:center;
+            background-color: #130f40;
+            background-image: linear-gradient(315deg, #130f40 0%, #000000 74%);
+            overflow:hidden;
+        }
+        #title_text{
+            text-align: center;
+            margin-bottom: 50px;
+            margin-top: 20px;
+        }
+        #title_text h4{ 
+            font-size: 40px;
+            color: rgb(255, 255, 255);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+        }
+        #hello_text{
+            text-align: center;
+            margin-top: 40px;
+        }
+        #hello_text h5{ 
+            font-size: 30px;
+            color: rgb(255, 255, 255);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+        }
+
+        .container .field{
+            display: flex;
+            margin-bottom: 30px;
+            padding: 5px;
+            justify-content: space-between;
+        }
+        .field h5{
+            font-size: 15px;
+            margin-left: 10px;
+            margin-right: 10px;
+            color: rgb(255,255,255);
+        }
+        #but {
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 40px;
+            margin-left:80px;
+            height: 40px;
+            width: 100px;
+        }
+        .container img{
+            margin-left: 3px;
+            height: 100px;
+            width: 100px;
+        }
+        #file{
+            color: rgb(255,255,255);
+        }
+        .msg p{
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom:20px;
+            color: rgb(255,255,255);
+        }
+    </style>
+</head>
+<body>
+    <img id="bgimg" src="https://wallpaperaccess.com/full/9028357.jpg" alt="">
+    <div id="main">
+        <div class="container">
+            <img src="/static/logo.png" alt="">
+            <div id="hello_text">
+                <h5>HELLO {{request.user}}</h5>
+            </div>
+            <div id="title_text">
+                <h4>POST YOUR RECIPE</h4>
+            </div>
+
+            <div class="msg">
+                {% for message in messages%}
+                    <p>
+                        {{message}} <a href="{% url 'dashboard_view' %}">DASHBOARD</a>
+                    </p>
+                {%endfor%}
+            </div>
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="field">
+                    <h5>Title : </h5>
+                    {{ form.title }}
+                </div>
+                <div class="field">
+                    <h5>Description : </h5>
+                    {{ form.description }}
+                </div>
+                <div class="field">
+                    <h5>Category : </h5>
+                    {{ form.category }}
+                </div>
+                <div class="field">
+                    <h5>Difficulty : </h5>
+                    {{ form.difficulty }}
+                </div>
+                <div class="field">
+                    <h5>Ingredients : </h5>
+                    {{ form.ingredients }}
+                </div>
+                <div class="field">
+                    <h5>Procedure : </h5>
+                    {{ form.procedure }}
+                </div>
+                <div class="field" id="file">
+                    <h5>Upload the image : </h5>
+                    {{ form.recp_img }}
+                </div>
+                <button id="but" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
