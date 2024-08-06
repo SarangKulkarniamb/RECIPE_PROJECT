@@ -3,7 +3,10 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Recipe(models.Model):
     DIFFICULTY=((1,1),(2,2),(3,3),(4,4),(5,5))
-    CATEGORY=(('breakfast','breakfast'),('Curry','Curry'),('lunch','lunch'),('dinner','dinner'),('appetizer','appetizer'),('snacks','snacks'),('dessert','dessert'),('drinks','drinks'))
+    CATEGORY=(
+        ('breakfast','breakfast'),('Curry','Curry'),('lunch','lunch'),('dinner','dinner'),
+        ('appetizer','appetizer'),('snacks','snacks'),('dessert','dessert'),('drinks','drinks')
+    )
     title=models.CharField(max_length=100)
     description=models.TextField(max_length=1000)
     difficulty=models.IntegerField(choices=DIFFICULTY)
